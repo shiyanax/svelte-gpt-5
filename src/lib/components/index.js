@@ -1,0 +1,11 @@
+export { default as Acess } from './Acess.svelte';
+export { default as Blog } from './Blog.svelte';
+export { default as Cta } from './Cta.svelte';
+export { default as Footer } from './Footer.svelte';
+export { default as Future } from './Future.svelte';
+export { default as HeroSection } from './HeroSection.svelte';
+export { default as Navbar } from './Navbar.svelte';
+export { default as Possibilities } from './Possibilities.svelte';
+export { default as Scroll } from './ScrollToTop.svelte';
+export { default as Validate } from './ValidationSection.svelte';
+export { default as WhatIsGPT } from './WhatIsGPT.svelte';
