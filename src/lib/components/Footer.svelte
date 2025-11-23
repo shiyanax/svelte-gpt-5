@@ -11,41 +11,25 @@
 		{ name: 'LinkedIn', url: 'https://linkedin.com', icon: LinkedInIcon }
 	];
 
+	const usefulLinks = [
+		{ name: 'Home', url: '#home' },
+		{ name: 'Blog', url: '#blog' },
+		{ name: 'About', url: '#about' },
+		{ name: 'Contact', url: '#contact' }
+	];
+
 	const legalLinks = [
 		{ name: 'Privacy Policy', url: '#privacy' },
 		{ name: 'Terms of Use', url: '#terms' },
-		{ name: 'Contact', url: '#contact' }
+		{ name: 'Support', url: '#support' }
 	];
 </script>
 
 <footer class="footer-section">
-	<div class="footer-container">
+	<div class="footer-grid">
 		<div class="footer-brand">
 			<h2 class="footer-logo">Gpt-5</h2>
 			<p>Building innovative experiences for you.</p>
-		</div>
-
-		<div class="footer-links">
-			<h3>Useful Links</h3>
-			<ul>
-				<li><a href="#home">Home</a></li>
-				<li><a href="#blog">Blog</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#contact">Contact</a></li>
-			</ul>
-		</div>
-
-		<div class="footer-legal">
-			<h3>Legal & Contact</h3>
-			<ul>
-				{#each legalLinks as link}
-					<li><a href={link.url}>{link.name}</a></li>
-				{/each}
-			</ul>
-		</div>
-
-		<div class="footer-social">
-			<h3>Follow Us</h3>
 			<div class="social-icons">
 				{#each socialLinks as link}
 					<a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name}>
@@ -56,44 +40,52 @@
 				{/each}
 			</div>
 		</div>
+
+		<div class="footer-links">
+			<h3>Useful Links</h3>
+			<ul>
+				{#each usefulLinks as link}
+					<li><a href={link.url}>{link.name}</a></li>
+				{/each}
+			</ul>
+		</div>
+
+		<div class="footer-legal">
+			<h3>Legal & Support</h3>
+			<ul>
+				{#each legalLinks as link}
+					<li><a href={link.url}>{link.name}</a></li>
+				{/each}
+			</ul>
+		</div>
 	</div>
 
+	<hr class="footer-divider" />
 	<p class="footer-copy">© {new Date().getFullYear()} Gpt-5. All rights reserved.</p>
 </footer>
 
 <style>
 	.footer-section {
-		margin-top: clamp(4rem, 8vw, 8rem);
-		padding: clamp(4rem, 8vw, 8rem);
-		background: linear-gradient(rgba(27, 120, 222, 0.1), rgba(27, 120, 222, 0.05));
-		backdrop-filter: blur(15px);
-		-webkit-backdrop-filter: blur(15px);
-		border-top: 1px solid rgba(255, 255, 255, 0.2);
-		box-shadow:
-			0 8px 32px rgba(27, 120, 222, 0.1),
-			0 0 20px rgba(27, 120, 222, 0.2);
-		color: #81afdd;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: clamp(2rem, 3vw, 3rem);
+		margin-top: 8rem;
+		padding: 4rem 2rem;
+		background-color: #0d1117;
+		color: #cfd8e3;
+		font-family: 'Inter', sans-serif;
 	}
 
-	.footer-container {
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		width: 100%;
+	.footer-grid {
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr;
+		gap: 3rem;
+		align-items: start;
 		max-width: 1200px;
-		gap: clamp(2rem, 4vw, 4rem);
-	}
-
-	.footer-brand {
-		flex: 1 1 250px;
+		margin: 0 auto;
 	}
 
 	.footer-logo {
-		font-size: clamp(2rem, 4vw, 2.8rem);
+		font-size: 2.4rem;
 		font-weight: 700;
 		background: linear-gradient(to right, #f49867, #ae67fa);
 		-webkit-background-clip: text;
@@ -102,18 +94,16 @@
 	}
 
 	.footer-brand p {
-		font-size: clamp(1.4rem, 1.5vw, 1.6rem);
-	}
-
-	.footer-links,
-	.footer-legal {
-		flex: 1 1 150px;
+		font-size: 1.5rem;
+		margin-bottom: 1.5rem;
+		line-height: 1.5;
 	}
 
 	.footer-links h3,
 	.footer-legal h3 {
-		font-size: clamp(1.4rem, 1.5vw, 1.6rem);
+		font-size: 1.6rem;
 		margin-bottom: 1rem;
+		color: #81afdd;
 	}
 
 	.footer-links ul,
@@ -122,15 +112,15 @@
 		padding: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 0.8rem;
+		gap: 0.6rem;
 	}
 
 	.footer-links a,
 	.footer-legal a {
-		color: #81afdd;
+		color: #cfd8e3;
 		text-decoration: none;
-		font-size: clamp(1.4rem, 1.5vw, 1.6rem);
-		transition: 0.3s;
+		font-size: 1.5rem;
+		transition: color 0.3s;
 	}
 
 	.footer-links a:hover,
@@ -138,41 +128,21 @@
 		color: #f49867;
 	}
 
-	.footer-social {
-		flex: 1 1 150px;
-	}
-
-	.footer-social h3 {
-		font-size: clamp(1.4rem, 1.5vw, 1.6rem);
-		margin-bottom: 1rem;
-	}
-
 	.social-icons {
 		display: flex;
-		gap: clamp(1rem, 2vw, 1.5rem);
-	}
-
-	.social-icons a {
-		transition: 0.3s;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		gap: 1rem;
+		margin-top: 1rem;
 	}
 
 	.icon-wrapper {
-		width: clamp(2.5rem, 3vw, 3rem);
-		height: clamp(2.5rem, 3vw, 3rem);
+		width: 40px;
+		height: 40px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		border-radius: 50%;
-		background: rgba(27, 120, 222, 0.1);
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px);
-		box-shadow:
-			0 4px 16px rgba(27, 120, 222, 0.1),
-			0 0 10px rgba(27, 120, 222, 0.15);
-		transition: 0.3s;
+		background: #1b78de22;
+		transition: all 0.3s ease;
 	}
 
 	.icon-wrapper img {
@@ -181,25 +151,36 @@
 		object-fit: contain;
 	}
 
-	.social-icons a:hover .icon-wrapper {
+	.icon-wrapper:hover {
 		transform: scale(1.1);
-		box-shadow:
-			0 6px 20px rgba(27, 120, 222, 0.2),
-			0 0 15px rgba(27, 120, 222, 0.25);
+		background: #1b78de44;
+		box-shadow: 0 4px 12px rgba(27, 120, 222, 0.3);
+	}
+
+	.footer-divider {
+		border: none;
+		border-top: 1px solid #1b78de22;
+		margin: 2rem 0;
 	}
 
 	.footer-copy {
-		font-size: clamp(1.4rem, 1.5vw, 1.6rem);
-		color: rgba(129, 175, 221, 0.8);
-		text-align: center;
-		margin-top: clamp(1rem, 2vw, 2rem);
+		text-align: center; /* centered copyright */
+		color: #8b9bb4;
+		font-size: 1.4rem;
+		margin-bottom: 0;
 	}
 
-	@media (max-width: 1000px) {
-		.footer-container {
-			flex-direction: column;
-			align-items: center;
-			text-align: center;
+	/* Mobile */
+	@media (max-width: 768px) {
+		.footer-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.footer-brand,
+		.footer-links,
+		.footer-legal {
+			text-align: left; /* everything left-aligned */
 		}
 	}
 </style>
